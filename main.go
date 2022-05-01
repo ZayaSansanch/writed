@@ -43,8 +43,8 @@ func open() {
 
 	fileScanner := bufio.NewScanner(file)
 
-	fmt.Println(fileScanner.Text())
 	for fileScanner.Scan() {
+		fmt.Println(fileScanner.Text())
 	}
 	if err := fileScanner.Err(); err != nil {
 		log.Fatalf("Error while reading file: %s", err)
