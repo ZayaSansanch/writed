@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"strings"
 )
 
 func comands() {
@@ -20,12 +21,19 @@ func comands() {
 	fmt.Println("")
 }
 
+func filename(name string) string {
+	if strings.HasPrefix(name, "./") || strings.HasPrefix(name, "../") {
+		log.Fatalf("Kirill uhodi!")
+	}
+	return "data/" + name + ".txt"
+}
+
 func open() {
 	var file1 string
 	fmt.Println("Wat file?")
 	fmt.Scan(&file1)
 
-	file, err := os.Open("data/" + file1)
+	file, err := os.Open(filename(file1))
 
 	fmt.Println("")
 
@@ -53,7 +61,7 @@ func write() {
 	fmt.Println("Wat name?")
 	fmt.Scan(&name)
 
-	f, err := os.Create("data/" + name)
+	f, err := os.Create(filename(name))
 	if err != nil {
 		panic(err)
 	}
@@ -75,7 +83,7 @@ func remove() {
 	fmt.Println("Wat file?")
 	fmt.Scan(&file)
 
-	os.Remove("data/" + file)
+	os.Remove(filename(file))
 
 	// if err != nil {
 	// 	fmt.Println(err)
