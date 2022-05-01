@@ -25,7 +25,7 @@ func open() {
 	fmt.Println("Wat file?")
 	fmt.Scan(&file1)
 
-	file, err := os.Open(file1)
+	file, err := os.Open("data/" + file1)
 
 	fmt.Println("")
 
@@ -53,7 +53,7 @@ func write() {
 	fmt.Println("Wat name?")
 	fmt.Scan(&name)
 
-	f, err := os.Create(name)
+	f, err := os.Create("data/" + name)
 	if err != nil {
 		panic(err)
 	}
@@ -69,13 +69,13 @@ func write() {
 	}
 }
 
-func delet() {
+func remove() {
 	var file string
 
 	fmt.Println("Wat file?")
 	fmt.Scan(&file)
 
-	os.Remove(file)
+	os.Remove("data/" + file)
 
 	// if err != nil {
 	// 	fmt.Println(err)
@@ -124,7 +124,7 @@ func main() {
 		} else if comand == "write" {
 			write()
 		} else if comand == "remove" {
-			delet()
+			remove()
 		} else {
 			fmt.Println("Command is not valit")
 		}
