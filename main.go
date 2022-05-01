@@ -100,11 +100,11 @@ func runCommand(name string, arg ...string) {
 }
 
 func save() {
-	runCommand("git", "status")
+	// runCommand("git", "status")
 	runCommand("git", "add", "-A")
 	runCommand("git", "commit", "-m", `"SistemCommit"`)
 	runCommand("git", "push")
-	runCommand("git", "status")
+	// runCommand("git", "status")
 }
 
 func main() {
