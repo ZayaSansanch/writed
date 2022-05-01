@@ -2,9 +2,11 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
 )
 
 func comands() {
@@ -83,8 +85,26 @@ func delet() {
 	fmt.Println("File delete successfully.")
 }
 
-func save() {
+func runCommand(name string, arg ...string) {
+	cmd := exec.Command(name, arg...)
 
+	var out bytes.Buffer
+	cmd.Stdout = &out
+
+	err := cmd.Run()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(out.String())
+}
+
+func save() {
+	runCommand("git", "status")
+	runCommand("git", "add", "-A")
+	runCommand("git", "commit", "-m", `"SistemCommit"`)
+	runCommand("git", "push")
+	runCommand("git", "status")
 }
 
 func main() {
