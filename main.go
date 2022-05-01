@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
 	"log"
 	"os"
@@ -88,15 +87,15 @@ func delet() {
 func runCommand(name string, arg ...string) {
 	cmd := exec.Command(name, arg...)
 
-	var out bytes.Buffer
-	cmd.Stdout = &out
+	// var out bytes.Buffer
+	// cmd.Stdout = &out
 
 	err := cmd.Run()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println(out.String())
+	// fmt.Println(out.String())
 }
 
 func save() {
