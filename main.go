@@ -104,6 +104,7 @@ func save() {
 	runCommand("git", "commit", "-m", `"SistemCommit"`)
 	runCommand("git", "push")
 	// runCommand("git", "status")
+	fmt.Println("Saved")
 }
 
 func main() {
