@@ -30,7 +30,7 @@ func filename(name string) string {
 
 func open() {
 	var file1 string
-	fmt.Println("Wat file?")
+	fmt.Println("What file?")
 	fmt.Scan(&file1)
 
 	file, err := os.Open(filename(file1))
@@ -43,8 +43,8 @@ func open() {
 
 	fileScanner := bufio.NewScanner(file)
 
+	fmt.Println(fileScanner.Text())
 	for fileScanner.Scan() {
-		fmt.Println(fileScanner.Text())
 	}
 	if err := fileScanner.Err(); err != nil {
 		log.Fatalf("Error while reading file: %s", err)
@@ -58,7 +58,7 @@ func open() {
 func write() {
 	var name string
 
-	fmt.Println("Wat name?")
+	fmt.Println("What name?")
 	fmt.Scan(&name)
 
 	f, err := os.Create(filename(name))
@@ -68,7 +68,7 @@ func write() {
 	defer f.Close()
 
 	var text string
-	fmt.Println("Wat text?")
+	fmt.Println("What text?")
 	fmt.Scan(&text)
 
 	_, err = f.WriteString(text)
@@ -80,7 +80,7 @@ func write() {
 func remove() {
 	var file string
 
-	fmt.Println("Wat file?")
+	fmt.Println("What file?")
 	fmt.Scan(&file)
 
 	os.Remove(filename(file))
