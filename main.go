@@ -61,7 +61,7 @@ func write() {
 	fmt.Println("What name?")
 	fmt.Scan(&name)
 
-	f, err := os.Create(filename(name))
+	f, err := os.OpenFile(filename(name), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		panic(err)
 	}
