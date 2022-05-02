@@ -71,7 +71,7 @@ func write() {
 	fmt.Println("What text?")
 	fmt.Scan(&text)
 
-	_, err = f.WriteString(text)
+	_, err = f.WriteString(text + "\n")
 	if err != nil {
 		panic(err)
 	}
