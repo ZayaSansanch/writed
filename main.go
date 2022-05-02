@@ -69,12 +69,24 @@ func write() {
 
 	var text string
 	fmt.Println("What text?")
-	fmt.Scan(&text)
 
-	_, err = f.WriteString(text + "\n")
-	if err != nil {
-		panic(err)
+	for {
+		text = ""
+		fmt.Scanln(&text)
+
+		// fmt.Printf(">%s<\n", text)
+
+		if text == "" {
+			break
+		}
+
+		_, err = f.WriteString(text + "\n")
+		if err != nil {
+			panic(err)
+		}
 	}
+
+	fmt.Println("")
 }
 
 func remove() {
